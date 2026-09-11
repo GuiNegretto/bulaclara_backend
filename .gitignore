@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Ambiente / segredos (NUNCA commitar)
+.env
+
+# Banco local SQLite (cache offline)
+data/
+*.db
+*.sqlite3
+
+# Builds
+build/
+dist/

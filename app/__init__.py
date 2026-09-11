@@ -1,0 +1,1 @@
+"""BulaClara Backend — Controller + Model/Serviços (padrão MVC)."""
