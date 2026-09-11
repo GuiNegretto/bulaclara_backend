@@ -37,6 +37,19 @@ Copy-Item .env.example .env   # preencha conforme seu ambiente
 .\.venv\Scripts\python -m pytest -q
 ```
 
+## Estado atual (Fase 1)
+
+- `app/schemas/medicamento.py` — contrato `POST /medicamentos/consulta`
+  (busca por nome e/ou GTIN; validações no Pydantic).
+- `app/controllers/medicamentos.py` — router registrado em `main.py`.
+- `app/services/consulta_service.py` — orquestra fontes de dados. Na Fase 1
+  usa a `DemoFonteMedicamento` (dados fictícios claramente marcados) apenas
+  para validar o fluxo Controller ⮕ Service ⮕ Fonte de ponta a ponta.
+  Nas Fases 2 e 3 essa fonte é substituída pelo cache (SQLite → PostgreSQL)
+  e pela ANVISA.
+- `app/models/` e `app/repositories/` — camadas vazias criadas (SQLAlchemy e
+  cache entram na Fase 2).
+
 ## Configuração
 
 Toda a configuração é feita por variáveis de ambiente (`.env`), lidas por

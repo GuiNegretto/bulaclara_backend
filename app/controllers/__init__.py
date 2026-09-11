@@ -1,0 +1,1 @@
+"""Routers HTTP do BulaClara — contêm só contratos, sem lógica de negócio."""

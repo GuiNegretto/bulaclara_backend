@@ -1,13 +1,14 @@
 """Ponto de entrada da API BulaClara (FastAPI).
 
-Fase 0/1 — esqueleto: expõe apenas `/health` e monta o CORS. Os controllers e
-services entram nas próximas fases, sempre seguindo o padrão MVC do documento
-de arquitetura (View -> Controller -> Service/Model -> Repository).
+Fase 0 — esqueleto: CORS + `/health`.
+Fase 1 — MVC: controllers, services e schemas registrados
+(`POST /medicamentos/consulta`).
 """
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.controllers import medicamentos
 from app.core.config import get_settings
 
 settings = get_settings()
@@ -21,6 +22,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# --------------- Routers --------------- #
+app.include_router(medicamentos.router)
 
 
 @app.get("/health", tags=["sistema"])
